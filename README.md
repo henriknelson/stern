@@ -72,7 +72,7 @@ Supported Kubernetes resources are `pod`, `replicationcontroller`, `service`, `d
  flag                        | default                       | purpose
 -----------------------------|-------------------------------|---------
  `--all-namespaces`, `-A`    | `false`                       | If present, tail across all namespaces. A specific namespace is ignored even if specified with --namespace.
- `--color`                   | `auto`                        | Force set color output. 'auto':  colorize if tty attached, 'always': always colorize, 'never': never colorize.
+ `--color`                   | `always`                      | Force set color output. 'auto':  colorize if tty attached, 'always': always colorize, 'never': never colorize.
  `--completion`              |                               | Output stern command-line completion code for the specified shell. Can be 'bash', 'zsh' or 'fish'.
  `--config`                  | `~/.config/stern/config.yaml` | Path to the stern config file
  `--container`, `-c`         | `.*`                          | Container name when multiple containers in pod. (regular expression)
@@ -85,16 +85,18 @@ Supported Kubernetes resources are `pod`, `replicationcontroller`, `service`, `d
  `--exclude-container`, `-E` | `[]`                          | Container name to exclude when multiple containers in pod. (regular expression)
  `--exclude-pod`             | `[]`                          | Pod name to exclude. (regular expression)
  `--field-selector`          |                               | Selector (field query) to filter on. If present, default to ".*" for the pod-query.
+ `--filter`, `-F`            | `[]`                          | Includes (and highlights) log items containing the provided regular expression
  `--highlight`, `-H`         | `[]`                          | Log lines to highlight. (regular expression)
  `--include`, `-i`           | `[]`                          | Log lines to include. (regular expression)
  `--init-containers`         | `true`                        | Include or exclude init containers.
  `--kubeconfig`              |                               | Path to the kubeconfig file to use for CLI requests.
+ `--level`, `-L`             |                               | Specify severity level to show. Currently support: [all, info, warn, debug, error]
  `--max-log-requests`        | `-1`                          | Maximum number of concurrent logs to request. Defaults to 50, but 5 when specifying --no-follow
  `--namespace`, `-n`         |                               | Kubernetes namespace to use. Default to namespace configured in kubernetes context. To specify multiple namespaces, repeat this or set comma-separated value.
  `--no-follow`               | `false`                       | Exit when all logs have been shown.
  `--node`                    |                               | Node name to filter on.
  `--only-log-lines`          | `false`                       | Print only log lines
- `--output`, `-o`            | `default`                     | Specify predefined template. Currently support: [default, raw, json, extjson, ppextjson]
+ `--output`, `-o`            | `verisure`                    | Specify predefined template. Currently support: [default, raw, json, extjson, ppextjson, verisure]
  `--pod-colors`              |                               | Specifies the colors used to highlight pod names. Provide colors as a comma-separated list using SGR (Select Graphic Rendition) sequences, e.g., "91,92,93,94,95,96".
  `--prompt`, `-p`            | `false`                       | Toggle interactive prompt for selecting 'app.kubernetes.io/instance' label values.
  `--selector`, `-l`          |                               | Selector (label query) to filter on. If present, default to ".*" for the pod-query.
